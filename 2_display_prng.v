@@ -47,16 +47,16 @@ module prng_3bit (
     wire d2 = reset ? seed[0] : q[1];
 
     // Flip-Flops
-    dff dff0 (.clk(clk), .reset(reset), .d(d0), .q(q[2]));
-    dff dff1 (.clk(clk), .reset(reset), .d(d1), .q(q[1]));
-    dff dff2 (.clk(clk), .reset(reset), .d(d2), .q(q[0]));
+    dfff dff0 (.clk(clk), .reset(reset), .d(d0), .q(q[2]));
+    dfff dff1 (.clk(clk), .reset(reset), .d(d1), .q(q[1]));
+    dfff dff2 (.clk(clk), .reset(reset), .d(d2), .q(q[0]));
 
     assign out = q;
 
 endmodule
 
 // D Flip-Flop Module
-module dff (
+module dfff (
     input wire clk,
     input wire reset,
     input wire d,
