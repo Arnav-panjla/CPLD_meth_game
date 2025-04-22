@@ -1,7 +1,10 @@
 module top_module (
     input wire clk,
     input wire rst,
-    output wire [5:0] random_number
+    output wire [2:0] num1, // tens digit
+    output wire [2:0] num2, // ones digit
+    output wire [5:0] rand_out,
+    output wire [6:0] num   // final 2-digit number (max 7 bits: 7*10 + 7 = 77)
 );
     wire slow_clk;
 
@@ -14,9 +17,14 @@ module top_module (
     random_6bit_xor_msb rng_inst (
         .clk(slow_clk),
         .rst(rst),
-        .rand_out(random_number)
+        .rand_out(rand_out)
     );
+
+    assign num1 = rand_out[5:3];
+    assign num2 = rand_out[2:0];
+    assign num = (num1 * 7'd10) + num2; // Combined as two-digit number
 endmodule
+
 
 module random_6bit_xor_msb (
     input wire clk,
