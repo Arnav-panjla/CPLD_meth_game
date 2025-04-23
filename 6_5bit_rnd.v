@@ -45,7 +45,6 @@ module top_module (
         .in2(values[2]),
         .in3(values[3]),
         .in4(values[4]),
-        .in5(values[5]),
         .sum_out(final_sum)
     );
 
@@ -82,13 +81,15 @@ module top_module (
                 end
                 3'd6: begin
                     current_output <= 8'b00000000;
-                    sum_valid <= 1;         // Signal that sum is now valid
+                    
                 end
                 3'd7: begin
-                    current_output <= sum_out;
+                    current_output <= final_sum;
+                    sum_valid <= 1;         // Signal that sum is now valid
                 end
                 3'd8: begin
-                    current_output <= sum_out;
+                    current_output <= fina;l_sum;
+                    sum_valid <= 1;         // Signal that sum is now valid
                 end
                 default: begin
                     current_output <= 8'b00000000;
@@ -161,50 +162,19 @@ module lfsr_5bit (
 endmodule
 
 
-
-
 module binary_to_bcd (
-    input  wire [4:0] binary_in,
+    input  wire [7:0] binary_in,
     output reg  [3:0] tens,
     output reg  [3:0] units
 );
+    reg [7:0] clamped_input;
+
     always @(*) begin
-        case (binary_in)
-            5'd0:  begin tens = 0; units = 0; end
-            5'd1:  begin tens = 0; units = 1; end
-            5'd2:  begin tens = 0; units = 2; end
-            5'd3:  begin tens = 0; units = 3; end
-            5'd4:  begin tens = 0; units = 4; end
-            5'd5:  begin tens = 0; units = 5; end
-            5'd6:  begin tens = 0; units = 6; end
-            5'd7:  begin tens = 0; units = 7; end
-            5'd8:  begin tens = 0; units = 8; end
-            5'd9:  begin tens = 0; units = 9; end
-            5'd10: begin tens = 1; units = 0; end
-            5'd11: begin tens = 1; units = 1; end
-            5'd12: begin tens = 1; units = 2; end
-            5'd13: begin tens = 1; units = 3; end
-            5'd14: begin tens = 1; units = 4; end
-            5'd15: begin tens = 1; units = 5; end
-            5'd16: begin tens = 1; units = 6; end
-            5'd17: begin tens = 1; units = 7; end
-            5'd18: begin tens = 1; units = 8; end
-            5'd19: begin tens = 1; units = 9; end
-            5'd20: begin tens = 2; units = 0; end
-            5'd21: begin tens = 2; units = 1; end
-            5'd22: begin tens = 2; units = 2; end
-            5'd23: begin tens = 2; units = 3; end
-            5'd24: begin tens = 2; units = 4; end
-            5'd25: begin tens = 2; units = 5; end
-            5'd26: begin tens = 2; units = 6; end
-            5'd27: begin tens = 2; units = 7; end
-            5'd28: begin tens = 2; units = 8; end
-            5'd29: begin tens = 2; units = 9; end
-            5'd30: begin tens = 3; units = 0; end
-            5'd31: begin tens = 3; units = 1; end
-            default: begin tens = 0; units = 0; end
-        endcase
+        clamped_input = (binary_in > 99) ? 99 : binary_in;
+        tens  = clamped_input / 10;
+        units = clamped_input % 10;
     end
+
 endmodule
 
 
