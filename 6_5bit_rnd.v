@@ -1,18 +1,20 @@
 module top_module (
     input wire clk,
     input wire rst,
+    output wire o_clk,
     input wire [4:0] seed_value,
-    output reg [4:0] current_output,
+    output reg [7:0] current_output,
     output wire [3:0] bcd_tens,
     output wire [3:0] bcd_units,
     output wire [7:0] final_sum,
     output reg sum_valid
 );
 
+    assign o_clk = clk; 
     wire [2:0] slow_clk;
     wire [4:0] lfsr_out;
 
-    reg [4:0] values [0:5];  // Array to store values
+    reg [4:0] values [0:4];  // Array to store values
 
     // Instantiate LFSR
     lfsr_5bit lfsr_inst (
@@ -55,32 +57,31 @@ module top_module (
         end else begin
             case (slow_clk)
                 3'd0: begin
-                    current_output <= 0;
+                    current_output <= 8'b00000000;
                     sum_valid <= 0;
                 end
                 3'd1: begin
-                    current_output <= lfsr_out;
+                    current_output <= {3'b000, lfsr_out};
                     values[0] <= lfsr_out;
                 end
                 3'd2: begin
-                    current_output <= lfsr_out;
+                    current_output <= {3'b000, lfsr_out};
                     values[1] <= lfsr_out;
                 end
                 3'd3: begin
-                    current_output <= lfsr_out;
+                    current_output <= {3'b000, lfsr_out};
                     values[2] <= lfsr_out;
                 end
                 3'd4: begin
-                    current_output <= lfsr_out;
+                    current_output <= {3'b000, lfsr_out};
                     values[3] <= lfsr_out;
                 end
                 3'd5: begin
-                    current_output <= lfsr_out;
+                    current_output <= {3'b000, lfsr_out};
                     values[4] <= lfsr_out;
                 end
                 3'd6: begin
-                    current_output <= lfsr_out;
-                    values[5] <= lfsr_out;
+                    current_output <= 8'b00000000;
                     sum_valid <= 1;         // Signal that sum is now valid
                 end
                 3'd7: begin
@@ -90,7 +91,7 @@ module top_module (
                     current_output <= sum_out;
                 end
                 default: begin
-                    current_output <= 0;
+                    current_output <= 8'b00000000;
                     sum_valid <= 0;
                 end
             endcase
@@ -105,11 +106,10 @@ module adder_6input (
     input wire [4:0] in2,
     input wire [4:0] in3,
     input wire [4:0] in4,
-    input wire [4:0] in5,
     output wire [7:0] sum_out
 );
 
-    assign sum_out = in0 + in1 + in2 + in3 + in4 + in5;
+    assign sum_out = (in0 + in1 + in2 + in3 + in4) % 100 ;
 
 endmodule
 
