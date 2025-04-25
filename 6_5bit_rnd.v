@@ -14,9 +14,6 @@ module gmpv3 (
     // Signal declarations
     wire [3:0] slow_clk;
     wire [4:0] lfsr_out;
-    wire [7:0] sum_out;
-    reg [2:0] score;
-    reg [4:0] values [0:4];
 
     // Instantiate LFSR
     lfsr_5bit lfsr_inst (
@@ -40,21 +37,10 @@ module gmpv3 (
         .units(bcd_units)
     );
 
-    // Instantiate 6-input Adder
-    adder_6input adder_inst (
-        .in0(values[0]),
-        .in1(values[1]),
-        .in2(values[2]),
-        .in3(values[3]),
-        .in4(values[4]),
-        .sum_out(sum_out)  // Connect sum_out from adder to wire
-    );
-
     // Control Logic
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             current_output <= 0;
-            score <= 0;
         end else begin
             case (slow_clk)
                 4'd0: begin
@@ -63,50 +49,21 @@ module gmpv3 (
                 end
                 4'd1, 4'd2, 4'd3, 4'd4, 4'd5: begin
                     current_output <= {3'b000, lfsr_out};
-                    // Store in the correct position using slow_clk as index
-                    values[slow_clk-1] <= lfsr_out;
+                    // values[slow_clk-1] <= lfsr_out;
                 end
                 4'd6: begin // placeholder 00 for user to calculate
-                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
+                    // led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= 8'b00000000;
                 end
-                4'd7, 4'd8: begin
+                4'd7, 4'd8, 4'd9, 4'd10: begin
                     current_output <= switch[7:0];
-                end
-                4'd9: begin
-                    if (sum_out == switch[7:0]) begin // Compare against sum_out instead of final_sum
-                        score <= score + 1;
-                        current_output <= sum_out;
-                        led <= 7'b1111111; // All LEDs on to show correct answer
-                    end 
-                    else begin
-                        current_output <= sum_out;
-                        led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
-                    end
-                end
-                4'd10: begin
-                    current_output <= sum_out;  // Assign to sum_out
                 end
                 default: begin
                     current_output <= 8'b00000000;
-                    led <= score; // Display score on LEDs
                 end
             endcase
         end
     end
-
-endmodule
-
-module adder_6input (
-    input wire [4:0] in0,
-    input wire [4:0] in1,
-    input wire [4:0] in2,
-    input wire [4:0] in3,
-    input wire [4:0] in4,
-    output wire [7:0] sum_out
-);
-
-    assign sum_out = (in0 + in1 + in2 + in3 + in4) % 100 ;
 
 endmodule
 
