@@ -4,7 +4,6 @@ module gmpv3 (
     output wire o_clk, // one led assigned to o_clk
     output reg [6:0] led, // one led is taken by o_clk
     input wire [7:0] switch,
-    output reg [7:0] current_output,
     output wire [3:0] bcd_tens,
     output wire [3:0] bcd_units
 );
@@ -12,6 +11,7 @@ module gmpv3 (
     assign o_clk = clk;
     
     // Signal declarations
+	 reg [7:0] current_output;
     wire [3:0] slow_clk;
     wire [4:0] lfsr_out;
 
@@ -121,7 +121,6 @@ module binary_to_bcd (
     assign tens = clamped_input / 10;
     assign units = clamped_input % 10;
 endmodule
-
 
 
 
