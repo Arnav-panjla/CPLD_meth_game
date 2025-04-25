@@ -55,7 +55,6 @@ module gmpv3 (
         if (rst) begin
             current_output <= 0;
             score <= 0;
-            final_sum <= 0;  // Reset final_sum to 0 on reset
         end else begin
             case (slow_clk)
                 4'd0: begin
@@ -93,7 +92,6 @@ module gmpv3 (
                     led <= score; // Display score on LEDs
                 end
             endcase
-            final_sum <= sum_out;  // Update final_sum with sum_out
         end
     end
 
