@@ -2,6 +2,7 @@
 - Part of our ELL201 Sem-2 2024-25 Project
 
 ## Pin mapping
+- clk - 43 (obv.)
 - bcd_tens[0] - 18 
 - bcd_tens[1] - 41
 - bcd_tens[2] - 39
