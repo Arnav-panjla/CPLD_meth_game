@@ -6,8 +6,7 @@ module gmpv3 (
     input wire [7:0] switch,
     output reg [7:0] current_output,
     output wire [3:0] bcd_tens,
-    output wire [3:0] bcd_units,
-    
+    output wire [3:0] bcd_units
 );
     // Direct clock pass-through
     assign o_clk = clk;
@@ -80,7 +79,8 @@ module gmpv3 (
                         score <= score + 1;
                         current_output <= sum_out;
                         led <= 7'b1111111; // All LEDs on to show correct answer
-                    end else begin
+                    end 
+                    else begin
                         current_output <= sum_out;
                         led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     end
@@ -134,19 +134,25 @@ module slow_clk_gen (
     input wire rst,
     output reg [3:0] slow_clk
 );
-    // Reduce counter width to minimum required (4 bits can count to 15, you need only 10)
     reg [3:0] cycle_counter;
 
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            {slow_clk, cycle_counter} <= 0; // Combined reset saves logic
-        else
-            // Combined increment and rollover logic
-            {slow_clk, cycle_counter} <= (cycle_counter == 9) ? 
-                                         ((slow_clk == 9) ? 8'h00 : {slow_clk + 1'b1, 4'h0}) : 
-                                         {slow_clk, cycle_counter + 1'b1};
+            slow_clk <= 0;
+            cycle_counter <= 0;
+        end else begin
+            if (cycle_counter == 9) begin
+                cycle_counter <= 0;
+                if (slow_clk == 10)
+                    slow_clk <= 0;
+                else
+                    slow_clk <= slow_clk + 1;
+            end else
+                cycle_counter <= cycle_counter + 1;
+        end
     end
 endmodule
+
 
 module binary_to_bcd (
     input  wire [7:0] binary_in,
