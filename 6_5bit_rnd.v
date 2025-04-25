@@ -7,8 +7,9 @@ module gmpv3 (
     output reg [7:0] current_output,
     output wire [3:0] bcd_tens,
     output wire [3:0] bcd_units,
-    output reg [7:0] final_sum
+    
 );
+    reg [7:0] final_sum;
     assign o_clk = clk; 
     wire [3:0] slow_clk;
     wire [4:0] lfsr_out;
