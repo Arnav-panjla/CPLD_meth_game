@@ -1,26 +1,25 @@
 module top_module (
     input wire clk,
     input wire rst,
-    output wire o_clk,
-    input wire [4:0] seed_value,
+    output wire o_clk, // one led asisgned to o_clk
+    output wire [6:0] led, // one led is taken by o_clk
+    input wire [7:0] switch,
     output reg [7:0] current_output,
     output wire [3:0] bcd_tens,
     output wire [3:0] bcd_units,
-    output wire [7:0] final_sum,
-    output reg sum_valid
+    output reg [7:0] final_sum
 );
-
     assign o_clk = clk; 
-    wire [2:0] slow_clk;
+    wire [3:0] slow_clk;
     wire [4:0] lfsr_out;
-
+    reg [2:0] score;
     reg [4:0] values [0:4];  // Array to store values
 
     // Instantiate LFSR
     lfsr_5bit lfsr_inst (
     .clk(clk),
     .rst(rst),
-    .seed_value(seed_value),
+    .seed_value(switch[4:0]), // Use switch[4:0] as seed
     .rand_num(lfsr_out)
 );
 
@@ -52,48 +51,64 @@ module top_module (
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             current_output <= 0;
-            sum_valid <= 0;
+            score <= 0;
         end else begin
             case (slow_clk)
-                3'd0: begin
+                4'd0: begin
                     current_output <= 8'b00000000;
-                    sum_valid <= 0;
+                    led <= switch[6:0]; // Display switch value on LEDs
                 end
-                3'd1: begin
+                4'd1: begin
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= {3'b000, lfsr_out};
                     values[0] <= lfsr_out;
                 end
-                3'd2: begin
+                4'd2: begin
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= {3'b000, lfsr_out};
                     values[1] <= lfsr_out;
                 end
-                3'd3: begin
+                4'd3: begin
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= {3'b000, lfsr_out};
                     values[2] <= lfsr_out;
                 end
-                3'd4: begin
+                4'd4: begin
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= {3'b000, lfsr_out};
                     values[3] <= lfsr_out;
                 end
-                3'd5: begin
+                4'd5: begin
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= {3'b000, lfsr_out};
                     values[4] <= lfsr_out;
                 end
-                3'd6: begin
+                4'd6: begin // placeholder 00 for user to calculate
+                    led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
                     current_output <= 8'b00000000;
-                    
                 end
-                3'd7: begin
+                4'd7: begin 
+                    current_output <= switch[7:0]; // Display switch value on LEDs
+                end
+                4'd8: begin
+                    current_output <= switch[7:0];
+                end
+                4'd9: begin
+                    if (final_sum == switch[7:0]) begin
+                        score <= score + 1;
+                        current_output <= final_sum;
+                        led <= 7'b1111111; // All LEDs on to show correct answer
+                    end else begin
+                        current_output <= final_sum;
+                        led <= ~(7'b1111111 >> score); // Heavy meth used !!!!
+                    end
+                end
+                4'd10: begin
                     current_output <= final_sum;
-                    sum_valid <= 1;         // Signal that sum is now valid
-                end
-                3'd8: begin
-                    current_output <= fina;l_sum;
-                    sum_valid <= 1;         // Signal that sum is now valid
                 end
                 default: begin
                     current_output <= 8'b00000000;
-                    sum_valid <= 0;
+                    led <= score; // Display score on LEDs
                 end
             endcase
         end
@@ -118,19 +133,21 @@ endmodule
 module slow_clk_gen (
     input wire clk,
     input wire rst,
-    output reg [2:0] slow_clk // 3-bit slow clock
+    output reg [3:0] slow_clk // 4-bit slow clock
 );
 
     reg [3:0] cycle_counter;
 
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            cycle_counter <= 0;
             slow_clk <= 0;
+            cycle_counter <= 0;
         end else begin
-            if (cycle_counter == 9) begin
+            if (cycle_counter == 9) begin // trigger every 10 clocks
                 cycle_counter <= 0;
-                if (slow_clk < 6)
+                if (slow_clk == 10)
+                    slow_clk <= 0; // Reset slow clock after 10 cycles
+                else
                     slow_clk <= slow_clk + 1;
             end else begin
                 cycle_counter <= cycle_counter + 1;
