@@ -14,9 +14,6 @@ module gmpv3 (
     reg [7:0] current_output;
     reg [4:0] lfsr_reg; // LFSR register
     
-    // LFSR output as wire for clarity
-    wire [4:0] lfsr_out;
-    assign lfsr_out = lfsr_reg;
 
     // Instantiate BCD Converter
     binary_to_bcd bcd_inst (
