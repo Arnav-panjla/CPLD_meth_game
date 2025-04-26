@@ -14,7 +14,7 @@ module ell201_project (
     reg [1:0] level; // 0 = idle, 1 = Level 1, 2 = Level 2
     reg [2:0] clk_counter;
     reg [4:0] counter;
-    reg [6:0] sum;
+    reg [7:0] sum;
 
     reg [3:0] countdown;
     reg countdown_active;
@@ -65,7 +65,7 @@ module ell201_project (
                         lfsr_reg <= {lfsr_reg[3:0], lfsr_reg[4] ^ lfsr_reg[2]};
                         current_output <= {3'b000, lfsr_reg};
                         led <= {lfsr_reg, 2'b00};
-                        sum <= bcd_tens * 10 + bcd_units;
+                        sum <= sum + current_output;
                     end else if (counter == 7) begin
                         // After showing 3 numbers, wait for user's input
                         if (switch == sum) begin
