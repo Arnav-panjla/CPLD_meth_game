@@ -10,6 +10,7 @@ module ell201_project (
      // Direct clock pass-through
      assign o_clk = clk;
 
+    reg [3:0]counter; // initilize counter
      // Signal declarations
      reg [7:0] current_output;
      reg [4:0] lfsr_reg; // LFSR register
@@ -28,6 +29,7 @@ module ell201_project (
              current_output <= 0;
              lfsr_reg <= 5'b10101; // Non-zero seed
              led <= 7'b0000000;
+             counter <= 0; // Reset counter
          end else begin
              // LFSR computation on every clock edge (full speed)
              // 5-bit maximal-length LFSR with taps at bits 5 and 3
