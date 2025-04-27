@@ -37,7 +37,7 @@ This project implements a mathematics game on a MAX3000A CPLD using Verilog. The
 ### Input Switches
 | Signal | Pin |
 |--------|-----|
-| switch[7] | 14 |
+| switch[7] or rst | 14 |
 | switch[6] | 12 |
 | switch[5] | 11 |
 | switch[4] | 9 |
