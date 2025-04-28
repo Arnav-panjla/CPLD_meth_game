@@ -4,7 +4,15 @@
 
 ## Overview
 
-This project implements a mathematics game on a MAX3000A CPLD using Verilog. The CPLD interfaces with switches for input and displays outputs via BCD and LEDs.
+FPGA Memory Game Implementation
+This Verilog code implements a memory-based arithmetic game on MAX3000A CPLD using Verilog. The system operates on a 1Hz clock, with each game cycle broken into five distinct phases:
+
+- The system generates random numbers using a 5-bit LFSR, displaying each value and accumulating their sum. 
+- After clearing the display, players input their calculated sum using switches. 
+- The system then shows the correct answer and evaluates the player's input with LED patterns indicating success or failure.
+- Finally, the game automatically resets for a new round. 
+
+A separate binary_to_BCD module handles conversion for the 7-segment display.
 
 ## Hardware Specifications
 
@@ -68,6 +76,7 @@ svf <file_locaion.svf>
 
 ## Some useful data
 ![](./images/7447_to_display_mapp.png)
+![](./images/7447%20x%207_seg_display.png)
 
 ## Contibutors
 - Team GMP (Good morning pineapple)
