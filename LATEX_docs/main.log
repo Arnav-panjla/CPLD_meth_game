@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.28)  29 APR 2025 00:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.28)  29 APR 2025 01:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1717,108 +1717,68 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
+<figures/circuit_diagram.png, id=9, 1164.60094pt x 402.75468pt>
+File: figures/circuit_diagram.png Graphic file (type png)
+<use figures/circuit_diagram.png>
+Package pdftex.def Info: figures/circuit_diagram.png  used on input line 223.
+(pdftex.def)             Requested size: 436.89304pt x 151.08794pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `tab:table' on page 1 undefined on input line 232.
 
 
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 186.
+(Font)              scaled to size 6.64998pt on input line 250.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.64998pt on input line 186.
+(Font)              scaled to size 6.64998pt on input line 250.
 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 186.
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 250.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc}
 
 
 {/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc} <./figures/cpld_pinout.png>]
 
-LaTeX Warning: Reference `tab:table' on page 2 undefined on input line 192.
+LaTeX Warning: Text page 2 contains only floats.
 
 
-LaTeX Warning: Reference `fig:figure' on page 2 undefined on input line 214.
-
-<figures/Example.pdf, id=34, 219.82124pt x 174.6525pt>
-File: figures/Example.pdf Graphic file (type pdf)
-<use figures/Example.pdf>
-Package pdftex.def Info: figures/Example.pdf  used on input line 218.
-(pdftex.def)             Requested size: 191.76599pt x 152.36751pt.
-
-LaTeX Warning: Citation 'PFGPlots' on page 2 undefined on input line 219.
-
-
-LaTeX Warning: Citation 'PFGPlots' on page 2 undefined on input line 219.
-
-
-LaTeX Warning: Reference `fig:examplefloat' on page 2 undefined on input line 223.
-
-<figures/Example2.pdf, id=35, 236.885pt x 188.705pt>
-File: figures/Example2.pdf Graphic file (type pdf)
-<use figures/Example2.pdf>
-Package pdftex.def Info: figures/Example2.pdf  used on input line 228.
-(pdftex.def)             Requested size: 200.02545pt x 159.34613pt.
-<figures/Example3.pdf, id=36, 235.88126pt x 190.7125pt>
-File: figures/Example3.pdf Graphic file (type pdf)
-<use figures/Example3.pdf>
-Package pdftex.def Info: figures/Example3.pdf  used on input line 234.
-(pdftex.def)             Requested size: 197.39099pt x 159.59502pt.
-
-LaTeX Warning: Citation 'PFGPlots' on page 2 undefined on input line 238.
-
-
-LaTeX Warning: Citation 'PFGPlots' on page 2 undefined on input line 238.
+Overfull \vbox (19.25206pt too high) has occurred while \output is active []
 
 
 
-Package mdframed Info: mdframed works in twoside mode on input line 252.
 
-LaTeX Warning: Reference `mdf@pagelabel-1' on page 2 undefined on input line 254.
-
-
-LaTeX Warning: Reference `ec:equation' on page 2 undefined on input line 268.
+LaTeX Warning: Text page 2 contains only floats.
 
 
-Underfull \hbox (badness 6758) in paragraph at lines 274--275
-[]\T1/stix2/m/n/10 (+20) If you want to change the val-ues that ad-just the
- []
+Overfull \vbox (19.25206pt too high) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-\T1/stix2/m/n/10 (+20) spac-ing above and be-low the equa-tions, play with
- []
+
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 250.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 6.64998pt on input line 250.
+[2{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc} <./figures/circuit_diagram.png>]
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-[][]\T1/lmtt/m/n/10 \setlength{\eqskip}{8pt} []\T1/stix2/m/n/10 (+20) value un-til the pre-ferred
- []
+LaTeX Warning: Reference `eq:lfsr' on page 3 undefined on input line 276.
 
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
+) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2024/09/23 1.10c listings language file
+) (/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2024/09/23 1.10c listings language file
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 282.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 289.
  (./example.m
-
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 1.
-[2{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc}{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc} <./figures/Example.pdf>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1.
 
 
+[3{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc}{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathsf.enc}])
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[3{/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathsf.enc} <./figures/Example2.pdf> <./figures/Example3.pdf>])
-
-/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:282: Package babel Error: You haven't defined the language 'spanish' yet.
+/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:289: Package babel Error: You haven't defined the language 'spanish' yet.
 (babel)                Perhaps you misspelled it or your installation
 (babel)                is not complete.
 
@@ -1826,12 +1786,12 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.282 ...., language=Matlab,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.m}
                                                   
 Your command will be ignored, type <return> to proceed
 
 
-/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:282: Package babel Error: You haven't defined the language 'spanish' yet.
+/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:289: Package babel Error: You haven't defined the language 'spanish' yet.
 (babel)                Perhaps you misspelled it or your installation
 (babel)                is not complete.
 
@@ -1839,12 +1799,12 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.282 ...., language=Matlab,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.m}
                                                   
 Your command will be ignored, type <return> to proceed
 
 
-/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:282: Package babel Error: You haven't defined the language 'spanish' yet.
+/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:289: Package babel Error: You haven't defined the language 'spanish' yet.
 (babel)                Perhaps you misspelled it or your installation
 (babel)                is not complete.
 
@@ -1852,12 +1812,12 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.282 ...., language=Matlab,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.m}
                                                   
 Your command will be ignored, type <return> to proceed
 
 
-/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:282: Package babel Error: You haven't defined the language 'spanish' yet.
+/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex:289: Package babel Error: You haven't defined the language 'spanish' yet.
 (babel)                Perhaps you misspelled it or your installation
 (babel)                is not complete.
 
@@ -1865,12 +1825,9 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.282 ...., language=Matlab,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.m}
                                                   
 Your command will be ignored, type <return> to proceed
-
-
-LaTeX Warning: Empty bibliography on input line 290.
 
 
 
@@ -1893,7 +1850,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
-Package lastpage Warning: Rerun to get the references right on input line 294.
+Package lastpage Warning: Rerun to get the references right on input line 297.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1905,18 +1862,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 70624 strings out of 475171
- 1529421 string characters out of 5767095
- 3757704 words of memory out of 5000000
- 92415 multiletter control sequences out of 15000+600000
- 810397 words of font info for 313 fonts, out of 8000000 for 9000
+ 69799 strings out of 475171
+ 1515483 string characters out of 5767095
+ 3302706 words of memory out of 5000000
+ 91603 multiletter control sequences out of 15000+600000
+ 795594 words of font info for 291 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 137i,13n,143p,1057b,3010s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 137i,13n,143p,1057b,2582s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (4 pages, 1216362 bytes).
+Output written on main.pdf (4 pages, 1406485 bytes).
 PDF statistics:
- 588 PDF objects out of 1000 (max. 8388607)
- 409 compressed objects within 5 object streams
- 120 named destinations out of 1000 (max. 500000)
- 89745 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 87671 words of extra memory for PDF output out of 89155 (max. 10000000)
 

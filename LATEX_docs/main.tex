@@ -15,8 +15,8 @@
 \documentclass[10pt,a4paper,twocolumn,twoside]{tau-class/tau}
 \usepackage[english]{babel}
 
-%% Only uncomment this if you have spanish language installed and want to use it
-%% \usepackage[spanish,es-nodecimaldot,es-noindentfirst]{babel} 
+%% Spanish babel recomendation
+% \usepackage[spanish,es-nodecimaldot,es-noindentfirst]{babel} 
 
 %% Draft watermark
 % \usepackage{draftwatermark}
@@ -149,9 +149,9 @@ A separate \texttt{binary\_to\_bcd} module handles binary to BCD conversion, ena
         \label{tab:pinmapping}
     \end{table}
     
-    \subsection{Truth Table}
+    \subsection{Truth Table and Circuit Diagram}
     
-    The truth table below outlines the system behavior during various phases of the game based on the cycle counter value:
+    The truth table and Circuit Diagram below outlines the system behavior during various phases of the game based on the cycle counter value:
     \vspace{15pt}
     \\
     Note - all the data are taken when seed phrase is 10101, for other seed the value will be different.
@@ -173,19 +173,59 @@ A separate \texttt{binary\_to\_bcd} module handles binary to BCD conversion, ena
         \caption{Truth Table for Game Phases}
         \label{tab:truthtable}
     \end{table*}
-	
-    \subsection{Circuit Diagram}
     
-    The circuit diagram is provided below:
-    
-    \begin{figure}[h!]
+    \begin{table*}[!t]
+    \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            \textbf{Step} & \textbf{LFSR State (Binary)} & \textbf{Decimal Equivalent} & \textbf{Feedback (bit4 XOR bit2)} \\
+            \hline
+            0  & 10101 & 21 & 1 $\oplus$ 1 = 0 \\
+            1  & 01010 & 10 & 0 $\oplus$ 0 = 0 \\
+            2  & 10100 & 20 & 1 $\oplus$ 1 = 0 \\
+            3  & 01000 & 8  & 0 $\oplus$ 0 = 0 \\
+            4  & 10000 & 16 & 1 $\oplus$ 0 = 1 \\
+            5  & 00001 & 1  & 0 $\oplus$ 0 = 0 \\
+            6  & 00010 & 2  & 0 $\oplus$ 0 = 0 \\
+            7  & 00100 & 4  & 0 $\oplus$ 1 = 1 \\
+            8  & 01001 & 9  & 0 $\oplus$ 0 = 0 \\
+            9  & 10010 & 18 & 1 $\oplus$ 0 = 1 \\
+            10 & 00101 & 5  & 0 $\oplus$ 1 = 1 \\
+            11 & 01011 & 11 & 0 $\oplus$ 0 = 0 \\
+            12 & 10110 & 22 & 1 $\oplus$ 1 = 0 \\
+            13 & 01100 & 12 & 0 $\oplus$ 1 = 1 \\
+            14 & 11001 & 25 & 1 $\oplus$ 0 = 1 \\
+            15 & 10011 & 19 & 1 $\oplus$ 0 = 1 \\
+            16 & 00111 & 7  & 0 $\oplus$ 1 = 1 \\
+            17 & 01111 & 15 & 0 $\oplus$ 1 = 1 \\
+            18 & 11111 & 31 & 1 $\oplus$ 1 = 0 \\
+            19 & 11110 & 30 & 1 $\oplus$ 1 = 0 \\
+            20 & 11100 & 28 & 1 $\oplus$ 1 = 0 \\
+            21 & 11000 & 24 & 1 $\oplus$ 0 = 1 \\
+            22 & 10001 & 17 & 1 $\oplus$ 0 = 1 \\
+            23 & 00011 & 3  & 0 $\oplus$ 0 = 0 \\
+            24 & 00110 & 6  & 0 $\oplus$ 1 = 1 \\
+            25 & 01101 & 13 & 0 $\oplus$ 1 = 1 \\
+            26 & 11011 & 27 & 1 $\oplus$ 0 = 1 \\
+            27 & 10111 & 23 & 1 $\oplus$ 1 = 0 \\
+            28 & 01110 & 14 & 0 $\oplus$ 1 = 1 \\
+            29 & 11101 & 29 & 1 $\oplus$ 1 = 0 \\
+            30 & 11011 & 27 & 1 $\oplus$ 0 = 1 \\
+            31 & 10111 & 23 & 1 $\oplus$ 1 = 0 \\
+            \hline
+        \end{tabular}
+    \caption{Truth table showing the complete cycle of the 5-bit LFSR starting from 10101 as seed.}
+    \end{table*}
+
+
+    \begin{figure*}[!t]
         \centering
-        % \includegraphics[width=0.8\textwidth]{images/IO mapping.png}
+        \includegraphics[width=.83\textwidth]{figures/circuit_diagram.png}
         \caption{CPLD Maths Game Circuit Diagram and IO Mapping}
         \label{fig:circuitdiagram}
-    \end{figure}
+    \end{figure*}
 
-\section{Tables and figures}
+\section{Test Bench Waveforms}
 
     \subsection{Tables}
 	
@@ -209,85 +249,48 @@ A separate \texttt{binary\_to\_bcd} module handles binary to BCD conversion, ena
 			
         \end{table}
 
-    \subsection{Figures}
-		
-    	Fig. \ref{fig:figure} shows an example figure.
-    		
-    	\begin{figure}[H]
-    		\centering
-    		\includegraphics[width=0.75\columnwidth]{Example.pdf}
-    		\caption{Example figure obtained from PGFPlots \cite{PFGPlots}.}
-    		\label{fig:figure}
-    	\end{figure}
-		
-        Fig. \ref{fig:examplefloat} shows an example of two figures that covers the width of the page. It can be placed at the top or bottom of the page. The space between the figures can also be changed using the \verb|\hspace{Xpt}| command.
-		
-        \begin{figure*}[tp] % t for position at the top of the current page; b for position at the bottom; p for new page
-		\centering
-		  \begin{subfigure}[b]{0.38\linewidth} % Fig (a)
-			\includegraphics[width=\linewidth]{Example2.pdf}
-			\caption{Example left figure.}
-			\label{fig:figa}
-		\end{subfigure}
-			\hspace{20pt}   % Space between the figures
-		\begin{subfigure}[b]{0.375\linewidth} % Fig (b)
-			\includegraphics[width=\linewidth]{Example3.pdf}
-			\caption{Example right figure.}
-			\label{fig:figb}
-		\end{subfigure}
-		\caption{Example figure that covers the width of the page obtained from PGFPlots \cite{PFGPlots}.}
-		\label{fig:examplefloat}
-	\end{figure*}
 		
 \section{Tau packages}
 
     \subsection{Tauenvs}
 	
-        This template has its own environment package \textit{tauenvs.sty} designed to enhance the presentation of the document. Among these custom environments are \textit{tauenv}, \textit{info} and \textit{note}.
+        This template has its own environment package designed to enhance the presentation of the document. Among these custom environments
 		
-        There are two environments which have a predefined title. These can be included by the command \verb|\begin{note}| and \verb|\begin{info}|. All the environments have the same style.
-			
-        An example using the tau environment is shown below.
-		
-    	\begin{tauenv}[frametitle=Environment with custom title]
-            This is an example of the custom title environment. To add a title type \verb|[frametitle=Your title]| next to the beginning of the environment (as shown in this example).
-    	\end{tauenv}
-		
-        Tauenv is the only environment that you can customize its title. On the other hand, info and note adapt their title to Spanish automatically when this language package is defined.
+        There are two environments which have a predefined title. These can be included by the commands
 		
     \subsection{Taubabel}
 
-        In previous versions, we included a package called \textit{taubabel}, which have all the commands that automatically translate from English to Spanish when this language package is defined. 
+        In previous versions, we included a package called, which have all the commands that automatically translate from English to Spanish when this language package is defined. 
         
         By default, tau displays its content in English. However, at the beginning of the document you will find a recommendation when writing in Spanish. 
 		
-        \textit{Note:} You may modify this package if you want to use other language than English or Spanish. This will make easier to translate the document without having to modify the class document.
-		
-\section{Equation}
+       You may modify this package if you want to use other language than English or Spanish. This will make easier to translate the document without having to modify the class document.
 
-    Equation \ref{ec:equation}, shows the Schrödinger equation as an example. 
-	\begin{equation} \label{ec:equation}
-		\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi = -i\hbar \frac{\partial\Psi}{\partial t}
-	\end{equation} 
-    The \textit{amssymb} package was not necessary to include, because stix2 font incorporates mathematical symbols for writing quality equations. In case you choose another font, uncomment this package in tau-class/tau.cls/math packages.
-	
-    If you want to change the values that adjust the spacing above and below the equations, play with \verb|\setlength{\eqskip}{8pt}| value until the preferred spacing is set.
-	
-\section{Adding codes}
-	
-    This class\footnote{Hello there! I am a footnote :)} includes the \textit{listings} package, which offers customized features for adding codes in \LaTeX\ documents specifically for C, C++, \LaTeX\ and Matlab. 
-	
-    You can customize the format in tau-class/tau.cls/listings style.
-	
-    \lstinputlisting[caption=Example of Matlab code., language=Matlab,label=code]{example.m}
-	
-    If line numbering is defined at the beginning of the document, I recommend placing the command \verb|\nolinenumbers| at the start and \verb|\linenumbers| at the end of the code. 
+
+\newpage
+
+\section{Linear Feedback Shift Register, LFSR Logic }
+
+    In this project, a 5-bit Linear Feedback Shift Register (LFSR) is used to generate pseudo-random numbers for the game. The LFSR advances based on a feedback polynomial that defines which bits are XORed together to create the next input.
+
+    The feedback logic can be described by Equation~\ref{eq:lfsr}:
     
-    This will temporarily remove line numbering and the code will look better.
+    \begin{equation} \label{eq:lfsr}
+        \text{next\_bit} = \text{lfsr}[4] \oplus \text{lfsr}[2]
+    \end{equation}
+
+    At every clock cycle, the LFSR shifts its bits to the right by one position, and the newly generated \texttt{next\_bit} is inserted into the most significant bit (MSB) position. This mechanism ensures a repeating but seemingly random sequence of numbers, suitable for a simple memory-based game.
+    \\
+    The feedback taps (bits 4 and 2) correspond to a primitive polynomial, ensuring maximal sequence length before repetition.
+
+	
+\section{Verilog codes}
+	
+    \lstinputlisting[caption=Example of Matlab code., language=Verilog,label=code]{example.m}
 	
 
 
-\printbibliography
+
 
 %----------------------------------------------------------
 

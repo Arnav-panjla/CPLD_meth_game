@@ -1,17 +1,16 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 0 -1
-  "main.bcf" 1745865147.79239 108700 4780ed329557fbdffb3a4b468e72c89e "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1745869239.60206 -1
+  "main.bcf" 1745869239.41071 108045 bcb05891c7881fd0185d52d712a83f0f "pdflatex"
   "tau.bib" 1745845062 133 f1f5a03f805dff4c07db6206d7146465 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745865145.99659 "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" "main.pdf" "main" 1745865147.99713 2
-  "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" 1745865145.84537 12844 64cdd063ca5a2004bc89f331c3fcf276 ""
+["pdflatex"] 1745869237.39389 "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" "main.pdf" "main" 1745869239.60233 2
+  "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" 1745869226.55025 12506 71297f3dd331642709d62604a45a5083 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1742685315 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1742685315 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc" 1742685315 3416 3b99a05a42a4705ec5a5521d2bffa072 ""
-  "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc" 1742685315 3232 f66a2bec88e5f591cfa639998baaa6bf ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc" 1742685315 3159 6cd87b3b51190b4d6117d4c2f083ba2e ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathsf.enc" 1742685315 3241 7569a3534b3b0a809752019573bbfa29 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc" 1742685315 7007 7bfc8f72039f2cce6ca911c3c71db584 ""
@@ -259,6 +258,8 @@
   "/usr/share/texmf-dist/tex/latex/listings/listings.cfg" 1742685315 1865 301ae3c26fb8c0243307b619a6aa2dd3 ""
   "/usr/share/texmf-dist/tex/latex/listings/listings.sty" 1742685315 81640 997090b6c021dc4af9ee00a97b85c5b4 ""
   "/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty" 1742685315 206518 4eb59a801ad842a713fa168c34227290 ""
+  "/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty" 1742685315 93855 83782cbe438f9229c1d17e92cee1446d ""
+  "/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty" 1742685315 90497 606307f9d31e805cfff0cd62ff91a50e ""
   "/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty" 1742685315 77051 be68720e5402397a830abb9eed5a2cb4 ""
   "/usr/share/texmf-dist/tex/latex/listings/lstpatch.sty" 1742685315 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd" 1742685315 2682 555da1faa2e266801e4b221d01a42cb5 ""
@@ -327,13 +328,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1745864622 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1745864561 2008244 7fd847abf104c3d637814a277f195494 ""
   "example.m" 1745845062 2854 21bfc9e1447b7c1956b2dc40ebce4083 ""
-  "figures/Example.pdf" 1745845062 103298 e3e95bc6deef5f77be9310563df6ab79 ""
-  "figures/Example2.pdf" 1745845062 32647 d6553b553ee90459e7bcf6bbe1962bbe ""
-  "figures/Example3.pdf" 1745845062 45318 d646ef6f68157fd199418f4cbe183074 ""
+  "figures/circuit_diagram.png" 1745867375.66582 312145 62738fa30311b8493041edc8f0f3d454 ""
   "figures/cpld_pinout.png" 1745845062 223159 0c014b6671cc329d9798a389fdfced23 ""
-  "main.aux" 1745865147.78639 8811 040731e68bdcd35da0edf3c9d38700b3 "pdflatex"
+  "main.aux" 1745869239.40571 7378 0ebe4b7b3aa5941634ea90f8cebaa15c "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.tex" 1745865145.84537 12844 64cdd063ca5a2004bc89f331c3fcf276 ""
+  "main.tex" 1745869226.55025 12506 71297f3dd331642709d62604a45a5083 ""
   "tau-class/tau.cls" 1745845062 15343 95930c1840b02fe1351c8877b3ac6f2c ""
   "tau-class/taubabel.sty" 1745845062 2369 a1bf684fde36e78a6391539fd38a7968 ""
   "tau-class/tauenvs.sty" 1745845062 3183 d5bbfc779d2505e5da39eeff038cc6e0 ""
