@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.28)  29 APR 2025 01:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.28)  29 APR 2025 01:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1771,7 +1771,7 @@ File: lstlang2.sty 2024/09/23 1.10c listings language file
 File: lstlang3.sty 2024/09/23 1.10c listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 289.
- (./example.m
+ (./example.v
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1.
 
@@ -1786,7 +1786,7 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.289 ..., language=Verilog,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.v}
                                                   
 Your command will be ignored, type <return> to proceed
 
@@ -1799,7 +1799,7 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.289 ..., language=Verilog,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.v}
                                                   
 Your command will be ignored, type <return> to proceed
 
@@ -1812,7 +1812,7 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.289 ..., language=Verilog,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.v}
                                                   
 Your command will be ignored, type <return> to proceed
 
@@ -1825,7 +1825,7 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.289 ..., language=Verilog,label=code]{example.m}
+l.289 ..., language=Verilog,label=code]{example.v}
                                                   
 Your command will be ignored, type <return> to proceed
 
@@ -1870,7 +1870,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  137i,13n,143p,1057b,2582s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic.pfb></usr/share/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Regular.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (4 pages, 1406485 bytes).
+Output written on main.pdf (4 pages, 1406477 bytes).
 PDF statistics:
  269 PDF objects out of 1000 (max. 8388607)
  234 compressed objects within 3 object streams

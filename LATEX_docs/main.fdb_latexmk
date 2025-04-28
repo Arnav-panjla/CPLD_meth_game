@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1745869239.60206 -1
-  "main.bcf" 1745869239.41071 108045 bcb05891c7881fd0185d52d712a83f0f "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1745869399.75267 -1
+  "main.bcf" 1745869399.62411 108045 bcb05891c7881fd0185d52d712a83f0f "pdflatex"
   "tau.bib" 1745845062 133 f1f5a03f805dff4c07db6206d7146465 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745869237.39389 "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" "main.pdf" "main" 1745869239.60233 2
-  "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" 1745869226.55025 12506 71297f3dd331642709d62604a45a5083 ""
+["pdflatex"] 1745869397.641 "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" "main.pdf" "main" 1745869399.75292 2
+  "/home/arnav-panjla/Desktop/Codes/ELL201_proj/LATEX_docs/main.tex" 1745869367.93816 12495 99c7f6ba1d43359cd0ccdd46ba1444c2 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1742685315 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1742685315 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc" 1742685315 3416 3b99a05a42a4705ec5a5521d2bffa072 ""
@@ -327,12 +327,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1745864622 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1745864561 2008244 7fd847abf104c3d637814a277f195494 ""
-  "example.m" 1745845062 2854 21bfc9e1447b7c1956b2dc40ebce4083 ""
+  "example.v" 1745845062 2854 21bfc9e1447b7c1956b2dc40ebce4083 ""
   "figures/circuit_diagram.png" 1745867375.66582 312145 62738fa30311b8493041edc8f0f3d454 ""
   "figures/cpld_pinout.png" 1745845062 223159 0c014b6671cc329d9798a389fdfced23 ""
-  "main.aux" 1745869239.40571 7378 0ebe4b7b3aa5941634ea90f8cebaa15c "pdflatex"
+  "main.aux" 1745869399.62011 7357 fba5b790b571fa618e5a0514b0fcfd43 "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.tex" 1745869226.55025 12506 71297f3dd331642709d62604a45a5083 ""
+  "main.tex" 1745869367.93816 12495 99c7f6ba1d43359cd0ccdd46ba1444c2 ""
   "tau-class/tau.cls" 1745845062 15343 95930c1840b02fe1351c8877b3ac6f2c ""
   "tau-class/taubabel.sty" 1745845062 2369 a1bf684fde36e78a6391539fd38a7968 ""
   "tau-class/tauenvs.sty" 1745845062 3183 d5bbfc779d2505e5da39eeff038cc6e0 ""

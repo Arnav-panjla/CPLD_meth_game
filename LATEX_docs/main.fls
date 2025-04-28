@@ -719,10 +719,10 @@ INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
-INPUT ./example.m
-INPUT ./example.m
+INPUT ./example.v
+INPUT ./example.v
 INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/ec-lmtt9.tfm
-INPUT example.m
+INPUT example.v
 INPUT /usr/share/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/ec-lmtk10.tfm
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc
