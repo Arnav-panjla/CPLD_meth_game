@@ -1,0 +1,206 @@
+#! /mingw64/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\MSYS64~1\mingw64\lib\ivl\system.vpi";
+:vpi_module "C:\MSYS64~1\mingw64\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\MSYS64~1\mingw64\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\MSYS64~1\mingw64\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\MSYS64~1\mingw64\lib\ivl\va_math.vpi";
+S_000001900fad7230 .scope module, "gmp" "gmp" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst";
+    .port_info 2 /OUTPUT 1 "o_clk";
+    .port_info 3 /OUTPUT 7 "led";
+    .port_info 4 /INPUT 7 "switch";
+    .port_info 5 /OUTPUT 4 "bcd_tens";
+    .port_info 6 /OUTPUT 4 "bcd_units";
+o000001900fb34218 .functor BUFZ 1, C4<z>; HiZ drive
+L_000001900fb30970 .functor BUFZ 1, o000001900fb34218, C4<0>, C4<0>, C4<0>;
+v000001900fb7b170_0 .net "bcd_tens", 3 0, L_000001900fb7b990;  1 drivers
+v000001900fb7b530_0 .net "bcd_units", 3 0, L_000001900fb7bc10;  1 drivers
+v000001900fb7bdf0_0 .net "clk", 0 0, o000001900fb34218;  0 drivers
+v000001900fb7b670_0 .var "counter", 3 0;
+v000001900fb7b710_0 .var "current_output", 7 0;
+v000001900fb7bf30_0 .var "led", 6 0;
+v000001900fb7b030_0 .var "lfsr_reg", 4 0;
+v000001900fb7b5d0_0 .net "o_clk", 0 0, L_000001900fb30970;  1 drivers
+o000001900fb34308 .functor BUFZ 1, C4<z>; HiZ drive
+v000001900fb7bad0_0 .net "rst", 0 0, o000001900fb34308;  0 drivers
+v000001900fb7b7b0_0 .var "sum", 7 0;
+o000001900fb34368 .functor BUFZ 7, C4<zzzzzzz>; HiZ drive
+v000001900fb7b0d0_0 .net "switch", 6 0, o000001900fb34368;  0 drivers
+E_000001900fb193f0 .event posedge, v000001900fb7bad0_0, v000001900fb7bdf0_0;
+S_000001900fad73c0 .scope module, "bcd_inst" "binary_to_bcd" 2 20, 2 89 0, S_000001900fad7230;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "binary_in";
+    .port_info 1 /OUTPUT 4 "tens";
+    .port_info 2 /OUTPUT 4 "units";
+L_000001900fb309e0 .functor BUFZ 8, v000001900fb7b710_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v000001900fad7870_0 .net *"_ivl_12", 31 0, L_000001900fb7ba30;  1 drivers
+L_000001900fb7c088 .functor BUFT 1, C4<000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v000001900fad93c0_0 .net *"_ivl_15", 23 0, L_000001900fb7c088;  1 drivers
+L_000001900fb7c0d0 .functor BUFT 1, C4<00000000000000000000000000001010>, C4<0>, C4<0>, C4<0>;
+v000001900fad7550_0 .net/2u *"_ivl_16", 31 0, L_000001900fb7c0d0;  1 drivers
+v000001900fad75f0_0 .net *"_ivl_18", 31 0, L_000001900fb7bb70;  1 drivers
+v000001900fb312e0_0 .net *"_ivl_2", 31 0, L_000001900fb7bcb0;  1 drivers
+L_000001900fb7bff8 .functor BUFT 1, C4<000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v000001900fb31380_0 .net *"_ivl_5", 23 0, L_000001900fb7bff8;  1 drivers
+L_000001900fb7c040 .functor BUFT 1, C4<00000000000000000000000000001010>, C4<0>, C4<0>, C4<0>;
+v000001900fb31420_0 .net/2u *"_ivl_6", 31 0, L_000001900fb7c040;  1 drivers
+v000001900fb7b850_0 .net *"_ivl_8", 31 0, L_000001900fb7b210;  1 drivers
+v000001900fb7b3f0_0 .net "binary_in", 7 0, v000001900fb7b710_0;  1 drivers
+v000001900fb7b8f0_0 .net "clamped_input", 7 0, L_000001900fb309e0;  1 drivers
+v000001900fb7b490_0 .net "tens", 3 0, L_000001900fb7b990;  alias, 1 drivers
+v000001900fb7bd50_0 .net "units", 3 0, L_000001900fb7bc10;  alias, 1 drivers
+L_000001900fb7bcb0 .concat [ 8 24 0 0], L_000001900fb309e0, L_000001900fb7bff8;
+L_000001900fb7b210 .arith/div 32, L_000001900fb7bcb0, L_000001900fb7c040;
+L_000001900fb7b990 .part L_000001900fb7b210, 0, 4;
+L_000001900fb7ba30 .concat [ 8 24 0 0], L_000001900fb309e0, L_000001900fb7c088;
+L_000001900fb7bb70 .arith/mod 32, L_000001900fb7ba30, L_000001900fb7c0d0;
+L_000001900fb7bc10 .part L_000001900fb7bb70, 0, 4;
+    .scope S_000001900fad7230;
+T_0 ;
+    %wait E_000001900fb193f0;
+    %load/vec4 v000001900fb7bad0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %pushi/vec4 21, 0, 5;
+    %assign/vec4 v000001900fb7b030_0, 0;
+    %pushi/vec4 0, 0, 7;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v000001900fb7b670_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b7b0_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000001900fb7b670_0;
+    %addi 1, 0, 4;
+    %assign/vec4 v000001900fb7b670_0, 0;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/u 4, 0, 4;
+    %jmp/0xz  T_0.2, 5;
+    %load/vec4 v000001900fb7b030_0;
+    %parti/s 4, 0, 2;
+    %load/vec4 v000001900fb7b030_0;
+    %parti/s 1, 4, 4;
+    %load/vec4 v000001900fb7b030_0;
+    %parti/s 1, 2, 3;
+    %xor;
+    %concat/vec4; draw_concat_vec4
+    %assign/vec4 v000001900fb7b030_0, 0;
+    %pushi/vec4 0, 0, 3;
+    %load/vec4 v000001900fb7b030_0;
+    %concat/vec4; draw_concat_vec4
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %load/vec4 v000001900fb7b030_0;
+    %concati/vec4 0, 0, 2;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+    %load/vec4 v000001900fb7b7b0_0;
+    %pushi/vec4 0, 0, 3;
+    %load/vec4 v000001900fb7b030_0;
+    %concat/vec4; draw_concat_vec4
+    %add;
+    %assign/vec4 v000001900fb7b7b0_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/e 4, 0, 4;
+    %jmp/0xz  T_0.4, 4;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/u 4, 0, 4;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_get/vec4 5;
+    %jmp/0 T_0.8, 5;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/u 10, 0, 4;
+    %flag_get/vec4 4;
+    %flag_get/vec4 5;
+    %or;
+    %and;
+T_0.8;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.6, 8;
+    %pushi/vec4 0, 0, 1;
+    %load/vec4 v000001900fb7b0d0_0;
+    %concat/vec4; draw_concat_vec4
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %jmp T_0.7;
+T_0.6 ;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/u 10, 0, 4;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_get/vec4 5;
+    %jmp/0 T_0.11, 5;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/u 12, 0, 4;
+    %flag_get/vec4 5;
+    %and;
+T_0.11;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.9, 8;
+    %load/vec4 v000001900fb7b7b0_0;
+    %pad/u 32;
+    %pushi/vec4 100, 0, 32;
+    %mod;
+    %pad/u 8;
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %load/vec4 v000001900fb7b0d0_0;
+    %concat/vec4; draw_concat_vec4
+    %pad/u 32;
+    %load/vec4 v000001900fb7b7b0_0;
+    %pad/u 32;
+    %pushi/vec4 100, 0, 32;
+    %mod;
+    %cmp/e;
+    %jmp/0xz  T_0.12, 4;
+    %pushi/vec4 127, 0, 7;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+    %jmp T_0.13;
+T_0.12 ;
+    %pushi/vec4 85, 0, 7;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+T_0.13 ;
+    %jmp T_0.10;
+T_0.9 ;
+    %load/vec4 v000001900fb7b670_0;
+    %cmpi/e 15, 0, 4;
+    %jmp/0xz  T_0.14, 4;
+    %pushi/vec4 127, 0, 7;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v000001900fb7b670_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b7b0_0, 0;
+    %jmp T_0.15;
+T_0.14 ;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001900fb7b710_0, 0;
+    %pushi/vec4 0, 0, 7;
+    %assign/vec4 v000001900fb7bf30_0, 0;
+T_0.15 ;
+T_0.10 ;
+T_0.7 ;
+T_0.5 ;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "final.v";
