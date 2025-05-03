@@ -36,9 +36,6 @@ A separate binary_to_BCD module handles conversion for the 7-segment display.
 | 13-14 | Hold result display | Sum modulo 100 | LEDs remain in previous state |
 | 15 | Reset game | 0 | LEDs ON |
 
-![demonstration gif](./images/video28_gif.gif)
-
-
 ## Pin Configuration
 ![Circuit Diagram](./images/circuit_diagram.png)
 ### Clock and Display
@@ -47,15 +44,25 @@ A separate binary_to_BCD module handles conversion for the 7-segment display.
 | clk    | 43  | Global clock (1Hz) |
 | o_clk  | 24  | Output clock (to monitor output) |
 
-<div style="display: flex; justify-content: space-between;">
-   
-  <div style="width: 30%;">
-    <h3>BCD Display Outputs</h3>
-    <table>
-      <thead>
+<table width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <h3>LED Indicators</h3>
+      <table>
         <tr><th>Signal</th><th>Pin</th></tr>
-      </thead>
-      <tbody>
+        <tr><td>led[6]</td><td>33</td></tr>
+        <tr><td>led[5]</td><td>31</td></tr>
+        <tr><td>led[4]</td><td>29</td></tr>
+        <tr><td>led[3]</td><td>28</td></tr>
+        <tr><td>led[2]</td><td>27</td></tr>
+        <tr><td>led[1]</td><td>26</td></tr>
+        <tr><td>led[0]</td><td>25</td></tr>
+      </table>
+    </td>
+    <td width="33%" valign="top">
+      <h3>BCD Display Outputs</h3>
+      <table>
+        <tr><th>Signal</th><th>Pin</th></tr>
         <tr><td>bcd_tens[3]</td><td>34</td></tr>
         <tr><td>bcd_tens[2]</td><td>39</td></tr>
         <tr><td>bcd_tens[1]</td><td>41</td></tr>
@@ -64,17 +71,12 @@ A separate binary_to_BCD module handles conversion for the 7-segment display.
         <tr><td>bcd_units[2]</td><td>40</td></tr>
         <tr><td>bcd_units[1]</td><td>16</td></tr>
         <tr><td>bcd_units[0]</td><td>19</td></tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div style="width: 30%;">
-    <h3>Input Switches</h3>
-    <table>
-      <thead>
+      </table>
+    </td>
+    <td width="33%" valign="top">
+      <h3>Input Switches</h3>
+      <table>
         <tr><th>Signal</th><th>Pin</th></tr>
-      </thead>
-      <tbody>
         <tr><td>switch[7]/rst</td><td>14</td></tr>
         <tr><td>switch[6]</td><td>12</td></tr>
         <tr><td>switch[5]</td><td>11</td></tr>
@@ -83,39 +85,22 @@ A separate binary_to_BCD module handles conversion for the 7-segment display.
         <tr><td>switch[2]</td><td>6</td></tr>
         <tr><td>switch[1]</td><td>5</td></tr>
         <tr><td>switch[0]</td><td>4</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div style="width: 30%;">
-    <h3>LED Indicators</h3>
-  <table>
-    <thead>
-      <tr><th>Signal</th><th>Pin</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>led[6]</td><td>33</td></tr>
-      <tr><td>led[5]</td><td>31</td></tr>
-      <tr><td>led[4]</td><td>29</td></tr>
-      <tr><td>led[3]</td><td>28</td></tr>
-      <tr><td>led[2]</td><td>27</td></tr>
-      <tr><td>led[1]</td><td>26</td></tr>
-      <tr><td>led[0]</td><td>25</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-</div>
-
+      </table>
+    </td>
+  </tr>
+</table>
 
 ## Programming Instructions
-
 ### JITAG commands
 ```
 cable ft2232
 detect
 svf <file_locaion.svf>
 ```
+
+## Demonstration 
+![demonstration gif](./images/video28_gif.gif)
+
 
 ## Some useful data
 some resource which came in handy during the project
