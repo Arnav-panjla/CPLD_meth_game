@@ -78,9 +78,7 @@ module binary_to_bcd (
      output wire [3:0] tens,    
      output wire [3:0] units        
 );
-
      wire [7:0] clamped_input = (binary_in > 8'd99) ? 8'd99 : binary_in;
-
      assign tens = clamped_input / 10;   
      assign units = clamped_input % 10; 
 endmodule

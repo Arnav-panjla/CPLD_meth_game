@@ -14,6 +14,10 @@
 
 \documentclass[10pt,a4paper,twocolumn,twoside]{tau-class/tau}
 \usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage{hyperref}  % Include this for clickable links
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc, fit}
+
 
 %% Spanish babel recomendation
 % \usepackage[spanish,es-nodecimaldot,es-noindentfirst]{babel} 
@@ -26,7 +30,7 @@
 %----------------------------------------------------------
 
 \journalname{ELL201 Sem-2 2024-25 Project Report}
-\title{CPLD Maths Game using Verilog}
+\title{CPLD-based Arithmetic Memory Game using Verilog}
 
 %----------------------------------------------------------
 % AUTHORS, AFFILIATIONS AND PROFESSOR
@@ -59,12 +63,12 @@
 % ABSTRACT AND KEYWORDS
 %----------------------------------------------------------
 \begin{abstract}    
-    This project presents the design and implementation of a memory-based arithmetic game on the MAX3000A CPLD using Verilog HDL. The system operates at a 1Hz clock rate and guides players through phases of random number display, sum calculation, input validation, and feedback through LEDs. A dedicated binary-to-BCD module ensures proper formatting for the 7-segment displays. This project reinforces concepts of sequential logic, finite state machines, and modular Verilog design in a real-world CPLD application.
+    This project presents the design and implementation of a memory-based arithmetic game on the MAX3000A CPLD using Verilog HDL. The system operates at a 1Hz clock rate, and the LFSR ensures a maximal-length pseudo-random sequence, critical for non-repetitive gameplay logic. A dedicated binary-to-BCD module ensures proper formatting for the 7-segment displays. This project reinforces concepts of sequential logic, finite state machines, and modular Verilog design in a real-world CPLD application.
 \end{abstract}
 
 %----------------------------------------------------------
 
-\keywords{CPLD, Verilog, Memory Game, Arithmetic Game, LFSR, BCD Conversion}
+\keywords{CPLD, Verilog, Memory Game, Arithmetic Game, LFSR, FSM, BCD Conversion}
 
 %----------------------------------------------------------
 
@@ -77,6 +81,7 @@
     % \linenumbers 
     
 %----------------------------------------------------------
+\noindent\hfill \href{https://github.com/Arnav-panjla/CPLD_meth_game}{\texttt{Link to our GitHub Repository}}
 
 \section{Introduction}
 
@@ -94,7 +99,7 @@ A separate \texttt{binary\_to\_bcd} module handles binary to BCD conversion, ena
 	
 \section{Motivation}
 
-    The goal of this project is to practically apply concepts of Verilog programming, sequential digital design, and modular circuit development on CPLDs. By integrating a memory challenge with arithmetic operations, the project not only reinforces theoretical knowledge but also develops skills related to finite state machines, random number generation using LFSRs, and binary-BCD conversions essential for digital display systems.
+    The goal of this project is to practically apply concepts of Verilog programming, sequential digital design, and modular circuit development on CPLDs. By integrating a memory challenge with arithmetic operations, the project not only reinforces theoretical knowledge but also develops skills related to finite state machines, random number generation using LFSRs, and binary-BCD conversions essential for digital display systems.Incorporating FSM logic further instills principles of deterministic control flow and modular behavioral modeling.
     
 \section{Implementation Methodology}
 
@@ -219,78 +224,231 @@ A separate \texttt{binary\_to\_bcd} module handles binary to BCD conversion, ena
 
 
     \begin{figure*}[!t]
-        \centering
         \includegraphics[width=.83\textwidth]{figures/circuit_diagram.png}
         \caption{CPLD Maths Game Circuit Diagram and IO Mapping}
         \label{fig:circuitdiagram}
     \end{figure*}
+    
+    \begin{figure*}[!t] 
+        \centering
+        \begin{subfigure}[b]{0.9\linewidth}
+            \includegraphics[width=\linewidth]{figures/ell201_proj_1.jpeg}
+            \caption{Circuit connection CPLD and Breadboard used in the project}
+            \label{fig:figa}
+        \end{subfigure}
+        \vspace{1cm}
+        \begin{subfigure}[b]{0.9\linewidth}
+            \includegraphics[width=\linewidth]{figures/ell201_proj_2.jpeg}
+            \caption{Setup during Demonstration of project.}
+            \label{fig:figb}
+        \end{subfigure}
+        \caption{CPLD demonstration}
+        \label{fig:examplefloat}
+    \end{figure*}
+
+
+    \begin{figure*}[t]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.55,
+        transform shape,
+        node distance=2cm and 2.5cm,
+        startstop/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=red!30},
+        process/.style={rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=blue!20},
+        decision/.style={diamond, aspect=2, minimum width=3.5cm, minimum height=1.5cm, text centered, draw=black, fill=green!30},
+        arrow/.style={thick,->,>=stealth},
+        phase/.style={rectangle, rounded corners, minimum width=3.5cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    ]
+        
+        % Top row - start and initialization
+        \node (start) [startstop] {Start};
+        \node (reset) [decision, right=of start] {Reset?};
+        \node (init) [process, below=of reset] {Initialize\\Registers};
+        \node (increment) [process, right=of reset] {Increment\\Counter};
+        
+        % Main flow nodes in a grid
+        % Row 1 - Phase 1
+        \node (phase1check) [decision, below=of increment] {Counter \textless\ 4?};
+        \node (phase1) [phase, right=of phase1check] {Phase 1:\\Random Number};
+        \node (lfsr) [process, right=of phase1] {Update LFSR};
+        \node (display) [process, right=of lfsr] {Display Value \&\\Update Sum};
+        
+        % Row 2 - Phase 2
+        \node (phase2check) [decision, below=of phase1check] {Counter = 4?};
+        \node (phase2) [phase, right=of phase2check] {Phase 2:\\Clear Display};
+        
+        % Row 3 - Phase 3
+        \node (phase3check) [decision, below=of phase2check] {Counter \textgreater\ 4 \&\& $\leq$ 10?};
+        \node (phase3) [phase, right=of phase3check] {Phase 3:\\User Input};
+        
+        % Row 4 - Phase 4
+        \node (phase4check) [decision, below=of phase3check] {Counter \textgreater\ 10 \&\& \textless\ 12?};
+        \node (phase4) [phase, right=of phase4check] {Phase 4:\\Check Result};
+        \node (resultcheck) [decision, right=of phase4] {Input = Correct?};
+        \node (correct) [process, above right=of resultcheck] {All LEDs On};
+        \node (wrong) [process, below right=of resultcheck] {Pattern LEDs};
+        
+        % Row 5 - Phase 5
+        \node (phase5check) [decision, below=of phase4check] {Counter = 15?};
+        \node (phase5) [phase, right=of phase5check] {Phase 5:\\Reset Game};
+        \node (default) [process, below=of phase5check] {Default:\\Clear Display};
+        
+        % Main flow connections - vertical spine
+        \draw [arrow] (increment) -- (phase1check);
+        \draw [arrow] (phase1check) -- (phase2check);
+        \draw [arrow] (phase2check) -- (phase3check);
+        \draw [arrow] (phase3check) -- (phase4check);
+        \draw [arrow] (phase4check) -- (phase5check);
+        
+        % Start and reset connections
+        \draw [arrow] (start) -- (reset);
+        \draw [arrow] (reset) -- node[anchor=west] {Yes} (init);
+        \draw [arrow] (reset) -- node[anchor=south] {No} (increment);
+        % \draw [arrow] (init) -- ++(0,-1) -| (increment);
+        
+        % Feedback system - using a dedicated return path on the far left
+        \coordinate (return) at ($(phase5check) + (-3,0)$);
+        \coordinate (returntop) at ($(return) + (0,14)$);
+        
+        % Phase 1-5 horizontal connections
+        \draw [arrow] (phase1check) -- node[anchor=south] {Yes} (phase1);
+        \draw [arrow] (phase1) -- (lfsr);
+        \draw [arrow] (lfsr) -- (display);
+        
+        \draw [arrow] (phase2check) -- node[anchor=south] {Yes} (phase2);
+        \draw [arrow] (phase3check) -- node[anchor=south] {Yes} (phase3);
+        
+        \draw [arrow] (phase4check) -- node[anchor=south] {Yes} (phase4);
+        \draw [arrow] (phase4) -- (resultcheck);
+        \draw [arrow] (resultcheck) -- node[anchor=south] {Yes} (correct);
+        \draw [arrow] (resultcheck) -- node[anchor=north] {No} (wrong);
+        
+        \draw [arrow] (phase5check) -- node[anchor=south] {Yes} (phase5);
+        \draw [arrow] (phase5check) -- node[anchor=east] {No} (default);
+        
+        % Add "No" labels to remaining decisions
+        \draw [arrow] (phase1check) -- node[anchor=east] {No} (phase2check);
+        \draw [arrow] (phase2check) -- node[anchor=east] {No} (phase3check);
+        \draw [arrow] (phase3check) -- node[anchor=east] {No} (phase4check);
+        \draw [arrow] (phase4check) -- node[anchor=east] {No} (phase5check);
+    \end{tikzpicture}
+    \caption{Control flow diagram for the CPLD Maths Game implementation}
+    \label{fig:controlflow}
+    \end{figure*}
+
+
+		
+\section{Finite State Machine (FSM) Design}
+
+The core control logic of the system is implemented using a synchronous Finite State Machine (FSM), which sequences through distinct operational phases of the arithmetic game. The FSM operates based on a classical Mealy-style structure that includes both present-state and next-state logic, as commonly recommended in structured Verilog designs. 
+
+The FSM transitions through the following states:
+
+\begin{itemize}
+    \item \textbf{IDLE} – Initial state; waits for system reset or start condition.
+    \item \textbf{GENERATE} – Activates a 5-bit Linear Feedback Shift Register (LFSR) to generate a sequence of pseudo-random numbers. The LFSR, being a maximal-length feedback register, cycles through $2^5 - 1 = 31$ unique non-zero states \cite{nandland_lfsr}.
+    \item \textbf{DISPLAY} – Sequentially outputs generated numbers to the 7-segment display. Internally, a running sum is updated synchronously.
+    \item \textbf{INPUT} – Accepts user input through DIP switches; values are latched using synchronous sampling techniques.
+    \item \textbf{CHECK} – Compares the stored sum with the player’s input. Non-blocking assignments ensure correct state progression.
+    \item \textbf{FEEDBACK} – Drives LED outputs to indicate correctness and resets the FSM after a brief delay.
+\end{itemize}
+
+All transitions are driven by a 1Hz system clock. The FSM design adheres to synchronous logic principles and uses non-blocking assignments (`<=`) to avoid race conditions. Debouncing is handled externally or assumed negligible due to clock throttling.
+
+
+
+\section{Linear Feedback Shift Register (LFSR) Logic}
+
+In this project, a 5-bit Linear Feedback Shift Register (LFSR) is employed as a hardware-based pseudo-random number generator (PRNG) to introduce non-determinism into the arithmetic memory game. The LFSR operates synchronously with the system clock and updates its state on every positive clock edge.
+
+The implemented LFSR uses a primitive characteristic polynomial of the form:
+
+\begin{equation}
+    P(x) = x^5 + x^3 + 1
+\end{equation}
+
+This corresponds to feedback taps at bit positions 4 and 2 (0-indexed), generating a maximal-length sequence of $2^5 - 1 = 31$ non-zero states before repetition. The feedback logic for the next input bit is given by:
+
+\begin{equation} \label{eq:lfsr}
+    \texttt{next\_bit} = \texttt{lfsr}[4] \oplus \texttt{lfsr}[2]
+\end{equation}
+
+At each clock cycle, the current LFSR state undergoes a right-shift operation, with \texttt{next\_bit} injected into the most significant bit (MSB). The resulting sequence ensures that the game remains challenging and memory-driven.
+
+The design is fully synchronous and avoids the use of blocking assignments, preserving timing determinism across state updates. The LFSR is reset asynchronously to a non-zero seed value. This implementation ensures compliance with standard digital PRNG design principles.
+
+
+
+    
+
 
 \section{Test Bench Waveforms}
 
-    \subsection{Tables}
-	
-        Table \ref{tab:table} shows an example table. The \verb|\tabletext{}| is used to add notes to tables easily. 
-    		
-        \begin{table}[H]
-            \centering
-            \caption{Astronomical Object Data}
-            \label{tab:table}
-            \begin{tabular}{ll}
-                \toprule
-                \textbf{Object} & \textbf{Distance (Light Years)} \\
-                \midrule
-                Alpha Centauri & 4.37 \\
-                Betelgeuse & 642.5 \\
-                Andromeda Galaxy & 2.537 million \\
-                \bottomrule   
-            \end{tabular}
-			
-            \tabletext{Note: The table contains data of some famous celestial objects.}
-			
-        \end{table}
-
-		
-\section{Tau packages}
-
-    \subsection{Tauenvs}
-	
-        This template has its own environment package designed to enhance the presentation of the document. Among these custom environments
-		
-        There are two environments which have a predefined title. These can be included by the commands
-		
-    \subsection{Taubabel}
-
-        In previous versions, we included a package called, which have all the commands that automatically translate from English to Spanish when this language package is defined. 
-        
-        By default, tau displays its content in English. However, at the beginning of the document you will find a recommendation when writing in Spanish. 
-		
-       You may modify this package if you want to use other language than English or Spanish. This will make easier to translate the document without having to modify the class document.
-
-
-\newpage
-
-\section{Linear Feedback Shift Register, LFSR Logic }
-
-    In this project, a 5-bit Linear Feedback Shift Register (LFSR) is used to generate pseudo-random numbers for the game. The LFSR advances based on a feedback polynomial that defines which bits are XORed together to create the next input.
-
-    The feedback logic can be described by Equation~\ref{eq:lfsr}:
-    
-    \begin{equation} \label{eq:lfsr}
-        \text{next\_bit} = \text{lfsr}[4] \oplus \text{lfsr}[2]
-    \end{equation}
-
-    At every clock cycle, the LFSR shifts its bits to the right by one position, and the newly generated \texttt{next\_bit} is inserted into the most significant bit (MSB) position. This mechanism ensures a repeating but seemingly random sequence of numbers, suitable for a simple memory-based game.
-    \\
-    The feedback taps (bits 4 and 2) correspond to a primitive polynomial, ensuring maximal sequence length before repetition.
+\begin{figure*}[!t]
+    \centering
+    \begin{subfigure}[b]{0.9\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/tb_gmp1.jpg}
+        \caption{Testbench waveform output (Part 1).}
+        \label{fig:tb_part1}
+    \end{subfigure}
+    \vspace{1em}
+    \begin{subfigure}[b]{0.9\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/tb_gmp2.jpg}
+        \caption{Testbench waveform output (Part 2).}
+        \label{fig:tb_part2}
+    \end{subfigure}
+    \caption{Combined simulation waveforms showing the DUT behavior over two capture windows.}
+    \label{fig:tb_waveforms}
+\end{figure*}
+ \lstinputlisting[caption=Verilog code, language=Verilog,label=code]{tb_gmp.v}
 
 	
 \section{Verilog codes}
 	
-    \lstinputlisting[caption=Verilog code, language=Verilog,label=code]{example.v}
+    \lstinputlisting[caption=Verilog code, language=Verilog,label=code]{gmp.v}
 	
 
 
 
+\section{Future Improvements}
+
+Several enhancements can be incorporated to expand the functionality and interactivity of the current system:
+
+\begin{enumerate}
+    \item \textbf{Random Seed:} 
+    Currently, the LFSR uses a hardcoded seed (\texttt{10101}) for pseudo-random number generation. A future improvement could allow the user to input a 5-bit seed value through switches, making each game session more unpredictable and engaging. This feature was not implemented due to hardware resource constraints (63 out of 64 macrocells were already utilized).
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.4\textwidth]{figures/issue_marcoshells.png}
+        \caption{exceeding macroshells 72/64 when trying to extend its capability.}
+        \label{fig:circuitdiagram}
+    \end{figure}
+
+    \item \textbf{Difficulty Levels:}
+    Adding levels of increasing difficulty, such as displaying more numbers or introducing subtraction/multiplication could make the game more challenging and educational.
+    
+
+    \item \textbf{Score Display:}
+    Enhancing the system to retain and display the player's score over multiple rounds would improve game continuity and user engagement.
+
+\end{enumerate}
+
+\section{Conclusion}
+
+This project demonstrates the application of Verilog HDL and CPLD-based digital design principles to build an interactive and educational arithmetic memory game. By combining modular FSM-based control logic, pseudo-random number generation through LFSR, and real-time user interaction using switches and displays, we were able to deliver a robust embedded system. The game not only tests a player's arithmetic skills but also offers immediate feedback, reinforcing user engagement.
+
+Through this implementation, we deepened our understanding of digital logic, timing constraints, and hardware debugging using the MAX3000A platform. The project serves as a foundation for more sophisticated embedded applications involving gamified learning or educational electronics. Future iterations could explore porting the design to FPGAs or integrating soft-core processors for extended functionality.
+
+\section{Acknowledgements}
+
+We would like to express our sincere gratitude to our Teaching Assistant, Chithambara J, for their continuous support and insightful feedback throughout the semester. Their guidance was immensely helpful in enhancing our technical understanding and in fostering a deeper interest in digital system design and embedded applications.
+
+\vspace{2em}
+\begin{center}
+  \large\textbf{-----------  Thank You  -----------}
+\end{center}
 
 %----------------------------------------------------------
 
